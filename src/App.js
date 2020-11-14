@@ -1,39 +1,74 @@
 import React,{useState} from 'react'
 import Container from 'react-bootstrap/Container'
-import BlogAdd from './components/BlogAdd'
-import Blogs from './components/Blogs'
-import BlogEdit from './components/BlogEdit'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Navbar from 'react-bootstrap/Navbar'
+import UserAdd from './components/UserAdd'
+import Users from './components/Users'
+import UserEdit from './components/UserEdit'
+import Search from './components/Search'
 
-const vincxebi =
+let db =
 [
   {
     id: 1,
-    author : "atulie1",
-    title : "racxa1",
-    url : "wikipedia.com"
+    username : "atulie1",
+    number : "racxa1",
+    email : "atuka@gmail.com"
   },
   {
     id: 2,
-    author : "atulie2",
-    title : "racxa2",
-    url : "wikipedia.com"
+    username : "atulie2",
+    number : "racxa2",
+    email : "giorgi@gmail.com"
   },
   {
     id: 3,
-    author : "atulie3",
-    title : "racxa3",
-    url : "wikipedia.com"
+    username : "atulie3",
+    number : "racxa3",
+    email : "vincxa@gmail.com"
   },
   
 ]
 
 const App = ()=>{
-  const [Vincxeebi,setVincxeebi] = useState(vincxebi)
+  const [Vincxeebi,setVincxeebi] = useState(db)
   const [isUpdate,setisUpdate] = useState(false)
   const [toUpdate,setToUpdate] = useState({})
-  const addBlog = (newObj) => setVincxeebi(Vincxeebi.concat(newObj))
-  const updateBlog = (newObj) => setVincxeebi(Vincxeebi.map(vincxa => vincxa.id === newObj.id ? newObj : vincxa))
-  const deleteBlog = (id) => setVincxeebi(Vincxeebi.filter(vincxa => vincxa.id !== id))
+  const addUser = (newObj) =>{
+    const updated = db.concat(newObj)
+    db=updated
+    setVincxeebi(db)
+  } 
+  const updateUser = (newObj) => {
+  const updated =  db.map(vincxa => vincxa.id === newObj.id ? newObj : vincxa)
+  db = updated
+  setVincxeebi(db)
+  }
+  const deleteUser = (id) => {
+    const updated =  db.filter(vincxa => vincxa.id !== id)
+    db = updated
+    setVincxeebi(db)
+  }
+  const searchUser = (toSearch,criteria) => {
+    if(toSearch === '') setVincxeebi(db)
+    else{
+      switch(criteria){
+        case 'username' :{
+          setVincxeebi(db.filter(user => user.username.toLowerCase().indexOf(toSearch.toLowerCase()) !== -1));
+          break;
+        } 
+        case 'number' : {
+          setVincxeebi(db.filter(user => user.number.toLowerCase().indexOf(toSearch.toLowerCase()) !== -1));
+          break;
+        }
+        case 'email' : {
+          setVincxeebi(db.filter(user => user.email.toLowerCase().indexOf(toSearch.toLowerCase()) !== -1));
+          break;
+        }
+        default : break;
+      }
+    }
+  }
   const flipisUpdate = ()=> setisUpdate(!isUpdate)
   const switchToUpdate = (toUpdate) =>{
     flipisUpdate()
@@ -41,9 +76,13 @@ const App = ()=>{
   }
   return(
     <div>
+  <Navbar bg="dark" variant="dark">
+    <Navbar.Brand >simple crud</Navbar.Brand>
+  </Navbar>
   <Container>
-    {isUpdate ? <BlogEdit updateBlog={updateBlog} toUpdateObj={toUpdate} flipisUpdate={flipisUpdate}/> :<BlogAdd addBlog={addBlog}/>}
-    <Blogs Vincxeebi={Vincxeebi} switchToUpdate={switchToUpdate} deleteBlog={deleteBlog}/>
+  {isUpdate ? <UserEdit updateUser={updateUser} toUpdateObj={toUpdate} flipisUpdate={flipisUpdate}/> :<UserAdd addUser={addUser}/>}
+  <Search searchUser = {searchUser}/>
+  <Users Vincxeebi={Vincxeebi} switchToUpdate={switchToUpdate} deleteUser={deleteUser}/>
   </Container>
     </div>
   )
