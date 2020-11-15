@@ -1,10 +1,11 @@
 import {React,useState} from 'react'
 import {FormControl,Dropdown,InputGroup,DropdownButton} from 'react-bootstrap'
+import PropTypes from 'prop-types';
 
 
 
 
-export default ({searchUser})=>{
+ const Search = ({searchUser})=>{
     const [searchBy,setsearchBy] = useState('username')
     const [searchVal,setsearchVal] = useState('')
     return (<InputGroup className="mb-3" >
@@ -21,3 +22,8 @@ export default ({searchUser})=>{
     <FormControl aria-describedby="basic-addon1"  onChange={(e)=>{setsearchVal(e.target.value);searchUser(e.target.value,searchBy)}} placeholder={"Enter "+ searchBy} value = {searchVal}/>
   </InputGroup>)
 }
+Search.displayName = 'Search'
+Search.propTypes = {
+  searchUser: PropTypes.func.isRequired
+}
+export default  Search;

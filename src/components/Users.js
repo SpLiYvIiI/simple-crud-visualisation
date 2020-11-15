@@ -1,8 +1,9 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import PropTypes from 'prop-types'
 
-export default ({Vincxeebi, switchToUpdate, deleteUser}) => {
+const Users = ({Vincxeebi, switchToUpdate, deleteUser}) => {
 const beforeDelete = (vincxa)=>{
     if(window.confirm(`you really want to delete user ${vincxa.username} ? `))
     deleteUser(vincxa.id)
@@ -40,3 +41,10 @@ return(
 </div>
 )
 }
+Users.displayName = 'Users';
+Users.porpTypes = {
+  Vincxeebi : PropTypes.array.isRequired,
+  switchToUpdate : PropTypes.func.isRequired,
+  deleteUser : PropTypes.func.isRequired
+}
+export default Users;

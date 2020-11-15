@@ -2,9 +2,8 @@ import React,{useState} from 'react'
 import Container from 'react-bootstrap/Container'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from 'react-bootstrap/Navbar'
-import UserAdd from './components/UserAdd'
+import UserChanges from './components/UserChanges'
 import Users from './components/Users'
-import UserEdit from './components/UserEdit'
 import Search from './components/Search'
 
 let db =
@@ -12,19 +11,19 @@ let db =
   {
     id: 1,
     username : "atulie1",
-    number : "racxa1",
+    number : "599134211",
     email : "atuka@gmail.com"
   },
   {
     id: 2,
     username : "atulie2",
-    number : "racxa2",
+    number : "557124211",
     email : "giorgi@gmail.com"
   },
   {
     id: 3,
     username : "atulie3",
-    number : "racxa3",
+    number : "558100212",
     email : "vincxa@gmail.com"
   },
   
@@ -32,7 +31,7 @@ let db =
 
 const App = ()=>{
   const [Vincxeebi,setVincxeebi] = useState(db)
-  const [isUpdate,setisUpdate] = useState(false)
+  const [isChange,setisChange] = useState(false)
   const [toUpdate,setToUpdate] = useState({})
   const addUser = (newObj) =>{
     const updated = db.concat(newObj)
@@ -69,18 +68,21 @@ const App = ()=>{
       }
     }
   }
-  const flipisUpdate = ()=> setisUpdate(!isUpdate)
+  const flipisChange = ()=> setisChange(!isChange)
   const switchToUpdate = (toUpdate) =>{
-    flipisUpdate()
     setToUpdate(toUpdate)
+    flipisChange()
   }
   return(
     <div>
   <Navbar bg="dark" variant="dark">
-    <Navbar.Brand >simple crud</Navbar.Brand>
+    <Navbar.Brand >simple-crud</Navbar.Brand>
   </Navbar>
   <Container>
-  {isUpdate ? <UserEdit updateUser={updateUser} toUpdateObj={toUpdate} flipisUpdate={flipisUpdate}/> :<UserAdd addUser={addUser}/>}
+  {isChange ? 
+  <UserChanges addUser={addUser} updateUser={updateUser} flipisChange={flipisChange} toUpdate={toUpdate}  setToUpdate={setToUpdate}/> 
+  : 
+  <button type="button" class="btn btn-secondary btn-lg btn-block" onClick={()=>{flipisChange()}}>Add user</button>}
   <Search searchUser = {searchUser}/>
   <Users Vincxeebi={Vincxeebi} switchToUpdate={switchToUpdate} deleteUser={deleteUser}/>
   </Container>
