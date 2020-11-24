@@ -1,1 +1,1 @@
-Racxa crud-io tu racxa universitetistvis
+Racxa crud-io tu racxa reactit universitetistvis
