@@ -4,6 +4,10 @@ Racxa crud-io tu racxa universitetistvis
 
 # Prerequisites
 
+Install [node](https://nodejs.org/en/download/). 
+
+Check your install with `node -v && npm -v`
+
 Install all packages with `npm install`
 
 ## To run project 
