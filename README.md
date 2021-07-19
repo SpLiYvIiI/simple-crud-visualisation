@@ -28,7 +28,7 @@ Use npm package called serve to serve the project in port 5000:
 
 Test that the project is running by going to <http://localhost:5000>
 
-## [Docker image](https://hub.docker.com/repository/docker/xelladze22/simple-crud)
+## Docker
 
 ### Pull image
 ```
