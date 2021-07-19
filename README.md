@@ -27,4 +27,17 @@ Use npm package called serve to serve the project in port 5000:
 - serve: `serve -s -l 5000 build`
 
 Test that the project is running by going to <http://localhost:5000>
+Simple CRUD visualization with search feature using react/react-bootstrap;
+
+## [Docker image](https://hub.docker.com/repository/docker/xelladze22/simple-crud)
+
+### Pull image
+```
+docker pull xelladze22/simple-crud
+```
+
+### Run container on port 3000
+```
+docker run  -p 3000:3000 xelladze22/simple-crud
+```
 
