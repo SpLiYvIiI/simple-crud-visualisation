@@ -28,5 +28,5 @@ jobs:
       uses: akhileshns/heroku-deploy@v3.12.12 
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "simple-crud" 
+        heroku_app_name: "xelladze22-simple-crud" 
         heroku_email: "atukadagio123@gmail.com"
