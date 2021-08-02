@@ -1,4 +1,4 @@
-# Simple crud
+# [Simple crud](https://xelladze22-simple-crud.herokuapp.com/)
 
 Racxa crud-io tu racxa universitetistvis
 
@@ -58,7 +58,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     container_name: watchtowerd
- ```
-
-
+ ``` 
 
