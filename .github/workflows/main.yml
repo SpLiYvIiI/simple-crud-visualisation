@@ -22,3 +22,11 @@ jobs:
       with:
         push: true
         tags: xelladze22/simple-crud:latest
+
+    - name: Deploy to heroku
+      if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip')}}
+      uses: akhileshns/heroku-deploy@v3.12.12 
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "simple-crud" 
+        heroku_email: "atukadagio123@gmail.com"
