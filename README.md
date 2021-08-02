@@ -35,8 +35,30 @@ Test that the project is running by going to <http://localhost:5000>
 docker pull xelladze22/simple-crud
 ```
 
-### Run container on port 3000
+### Run container on port 5000 
+container is always up to date with the repository
 ```
-docker run  -p 3000:3000 xelladze22/simple-crud
+docker run  -p 5000:5000 xelladze22/simple-crud
 ```
+you can also use watchtower so you don't have to manually pull image and rerun container
+
+#### docker-compose file can look like this
+```
+version: "3"
+services:
+  coursematerial:
+    image: xelladze22/simple-crud
+    ports:
+      - 5000:5000
+    container_name: simple-crud
+  watchtower:
+    image: containrrr/watchtower
+    environment:
+      -  WATCHTOWER_POLL_INTERVAL=60
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: watchtowerd
+ ```
+
+
 
