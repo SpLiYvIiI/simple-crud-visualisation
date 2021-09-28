@@ -1,6 +1,6 @@
 # [Simple crud](https://xelladze22-simple-crud.herokuapp.com/)
 
-Simple crud operations visualisaiton in react (Racxa universitetistvis)
+Simple crud operations visualised in react (Racxa universitetistvis)
 
 # Prerequisites
 
