@@ -1,23 +1,24 @@
-FROM node:alpine AS build
+FROM node:16-alpine3.12 as build
 
 WORKDIR /devapp
 
 COPY . .
 
-RUN npm install
+RUN npm install && npm run build
 
-RUN npm run build
+FROM node:16-alpine3.12
 
-FROM node:alpine
+EXPOSE 5000
 
 WORKDIR /prodapp
 
 RUN mkdir build
 
-EXPOSE 5000
-
 COPY --from=build ./devapp/build ./build
 
-RUN npm install -g serve
+RUN npm install -g serve && adduser -S client &&  \
+    chown client: /prodapp && chmod 700 /prodapp 
+
+USER client
 
 CMD serve -s -l 5000 build
