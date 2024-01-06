@@ -1,6 +1,8 @@
-# [Simple crud](https://xelladze22-simple-crud.herokuapp.com/)
+# Simple crud
 
-Simple crud operations visualised in react (University project)
+Simple crud operations visualised in react
+
+[Live demo](https://spliyviii.github.io/simple-crud-visualisation/)
 
 # Prerequisites
 
